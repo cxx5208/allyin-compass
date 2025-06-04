@@ -1,0 +1,158 @@
+﻿🧭 AllyIn Compass - Full Enterprise AI Agent
+(15-Day Plan for Undergraduate Developers - OSS Version)
+Goal: Build a fully open-source prototype of AllyIn Compass, a smart enterprise assistant that can search structured data (CSV/SQL), unstructured data (PDFs/emails), and knowledge graphs to answer complex questions. The project uses Retrieval-Augmented Generation (RAG), tool-based agents, and logging - without paid APIs or commercial models.
+
+Day 0: Preparation
+Tasks:
+● Install Python 3.10+ and VS Code
+● Set up GitHub account and fork starter repo
+● Set up free GPU access:
+○ Google Colab
+○ Kaggle (optional)
+○ Hugging Face (Spaces for UI, Inference Endpoints for free model access)
+Deliverables:
+● ~/allyin-compass/ directory
+● Colab/GitHub setup complete
+
+Day 1: Project Setup + Structured Data
+Tasks:
+● Setup: python -m venv venv && source venv/bin/activate
+● pip install -r requirements.txt
+● Add sample .csv files to data/structured/
+● Load into DuckDB using pandas
+Deliverables:
+● src/ingest/structured_loader.py
+● DuckDB loaded with test data
+
+Day 2: Ingest Unstructured Data (PDFs + Emails)
+Tasks:
+● Use PyMuPDF to extract PDF text
+● Use email package for .eml parsing
+● Save all output as JSONL (1 doc per line)
+Deliverables:
+● src/ingest/document_parser.py
+● data/unstructured/parsed.jsonl
+
+Day 3: Embedding Text + Vector DB
+Tasks:
+● Use sentence-transformers or Instructor-XL (free HF model)
+● Store embeddings in Qdrant (self-hosted or HF free tier)
+● Use Colab if local GPU is unavailable
+Deliverables:
+● src/ingest/embedder.py
+● 100+ vector chunks stored in Qdrant
+
+Day 4: Multi-Modal Retrieval Setup
+Tasks:
+● SQL: DuckDB + manual query wrappers
+● Vector: Qdrant vector retriever
+● Graph: Use Neo4j Desktop, or NetworkX for lightweight graphs
+Deliverables:
+● src/retrievers/sql_retriever.py, vector_retriever.py, graph_retriever.py
+
+Day 5: Local Tool-Based Agent (No API)
+Tasks:
+● Define tools as Python functions
+● Chain them using a simple agent loop
+● Log tool usage manually
+Deliverables:
+● agents/multi_tool_agent.py
+● Working Python-only agent engine
+
+Day 6: RAG with Open Source LLMs
+Tasks:
+● Use Hugging Face models like:
+○ tiiuae/falcon-7b-instruct
+○ mistralai/Mistral-7B-Instruct-v0.1
+○ google/flan-t5-base (for small runs)
+● Run via Colab or local transformers inference
+Deliverables:
+● tools/rag_tool.py
+● Answers generated from OSS LLMs with citations
+
+Day 7: UI with Streamlit
+Tasks:
+● Build basic UI with streamlit
+● Inputs: query, domain
+● Output: formatted answer
+● Sidebar: filters
+Deliverables:
+● ui/app.py with working interface
+
+Day 8: Feedback Loop (No DB needed)
+Tasks:
+● Thumbs up/down buttons in UI
+● Store as JSONL locally
+● Option to upload to Colab/Drive for versioning
+Deliverables:
+● feedback/logger.py
+● feedback_log.jsonl
+
+Day 9: Fine-Tuning Simulation with OSS Tools
+Tasks:
+● Collect thumbs-up examples
+● Format as prompt → completion pairs
+● Use Hugging Face + PEFT + LoRA for small model fine-tuning
+● Run on free Colab GPU
+Deliverables:
+● notebooks/simulate_finetuning.ipynb
+● models/lora_adapter/
+
+Day 10: Guardrails for PII/Compliance
+Tasks:
+● Use regex and keyword detection
+● Examples: SSNs, emails, risk flags
+● Add flagging function to retrieval flow
+Deliverables:
+● security/pii_filter.py, compliance_tagger.py
+
+Day 11: Observability Dashboard
+Tasks:
+● Streamlit dashboard:
+○ Query count
+○ Tool usage
+○ Avg. response time
+● Live chart updates via pandas + plotly
+Deliverables:
+● dashboards/metrics.py
+● Dashboard in ui/app.py sidebar
+
+Day 12: Domain Use Case Tests
+Tasks:
+● Run queries per domain
+● Log and trace tool calls
+● Visualize results
+Deliverables:
+● examples/use_case_tests.json
+● Screenshot evidence
+
+Day 13: UI Final Polish
+Tasks:
+● Style dropdowns and highlight answers
+● Use color-coded text
+● Ensure citation/source linking
+Deliverables:
+● Final ui/app.py
+● Updated demo assets
+
+Day 14: Record OSS Demo + Slides
+Tasks:
+● Record 2-3 min demo
+● Create slides:
+○ OSS-only stack
+○ Model choices
+○ Example outputs
+Deliverables:
+● demo_assets/demo.mp4
+● demo_assets/slide_deck.pdf
+
+Day 15: Final Polish + GitHub Launch
+Tasks:
+● Clean up repo
+● Add docstrings, README.md
+● Include full OSS credits
+● Push to GitHub
+Deliverables:
+● Public GitHub repo
+● Shareable demo link
+

@@ -1,0 +1,10 @@
+Subject: Sample Email Subject
+From: sender@example.com
+To: recipient@example.com
+Date: Tue, 16 Jul 2024 10:00:00 -0400
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+This is the body of the sample email.
+It should be extracted by the email parser. 

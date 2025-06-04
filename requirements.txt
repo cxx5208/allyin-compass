@@ -1,0 +1,33 @@
+pandas
+duckdb
+PyMuPDF 
+qdrant-client
+sentence-transformers 
+chromadb 
+sentencepiece 
+streamlit 
+peft 
+# Core dependencies
+certifi>=2023.11.17,<2025.0.0
+langchain==0.3.10
+markupsafe==3.0.2
+jinja2>=3.1.2,<4.0.0
+
+# ML/AI dependencies
+scikit-learn>=1.4.1.post1,<2.0.0
+diffusers==0.27.2
+huggingface-hub==0.25.2
+Pillow==9.5.0
+
+# Web framework dependencies
+fastapi==0.108.0
+Flask>=1.1.2
+flask-cors>=4.0.1
+
+# Other dependencies
+aiofiles>=22.0,<24.0
+typer>=0.3.0,<0.10.0
+grpcio-tools>=1.66.2,<2.0.0
+pandas==2.2.2
+orjson==3.10.0
+chardet>=5.2.0,<6.0.0

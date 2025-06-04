@@ -1,0 +1,44 @@
+[
+  {
+    "domain": "Structured Data",
+    "description": "Retrieve all data from the sample_data_1 table.",
+    "query": "sql: SELECT * FROM sample_data_1;",
+    "expected_tool": "sql_retriever",
+    "notes": "Requires running structured_loader.py"
+  },
+  {
+    "domain": "Structured Data",
+    "description": "Find entries with a specific value in sample_data_1.",
+    "query": "sql: SELECT * FROM sample_data_1 WHERE value > 100;",
+    "expected_tool": "sql_retriever",
+    "notes": "Requires running structured_loader.py"
+  },
+  {
+    "domain": "Unstructured Data",
+    "description": "Search for information about the sample email.",
+    "query": "vector search: What is the subject of the email?",
+    "expected_tool": "vector_retriever (via RAG tool)",
+    "notes": "Requires running document_parser.py and embedder.py"
+  },
+   {
+    "domain": "Unstructured Data",
+    "description": "Ask a question that requires RAG on the email content.",
+    "query": "vector search: What is mentioned in the body of the email?",
+    "expected_tool": "vector_retriever (via RAG tool)",
+    "notes": "Requires running document_parser.py and embedder.py"
+  },
+  {
+    "domain": "Knowledge Graph",
+    "description": "Find entities related to Person A.",
+    "query": "graph: Person A",
+    "expected_tool": "graph_retriever",
+    "notes": "Requires graph_retriever.py with sample graph"
+  },
+    {
+    "domain": "Knowledge Graph",
+    "description": "Find entities related to Company Y.",
+    "query": "graph: Company Y",
+    "expected_tool": "graph_retriever",
+    "notes": "Requires graph_retriever.py with sample graph"
+  }
+] 

@@ -1,0 +1,1 @@
+{"filepath": "data/unstructured/sample_email.eml", "filename": "sample_email.eml", "text": "This is the body of the sample email.\nIt should be extracted by the email parser. ", "subject": "Sample Email Subject", "pii_tags": {}, "compliance_tags": []}
