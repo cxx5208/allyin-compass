@@ -148,6 +148,24 @@ The system includes built-in metrics tracking:
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+## 🔓 Open Source
+
+AllyIn Compass is an open-source project, which means:
+
+- **Free to Use**: The software is available for anyone to use without cost
+- **Source Code Access**: All code is publicly available on GitHub
+- **Community Driven**: We welcome contributions from the community
+- **Transparent Development**: The development process is open and visible to all
+- **MIT Licensed**: You can use, modify, and distribute the code under the MIT License
+
+### Why Open Source?
+
+- **Collaboration**: Enables developers worldwide to contribute and improve the project
+- **Innovation**: Allows for rapid development and feature additions
+- **Quality**: Community review helps maintain high code quality
+- **Learning**: Serves as a learning resource for others
+- **Trust**: Transparency builds trust in the software
+
 ## 🙏 Acknowledgments
 
 - DuckDB for efficient structured data processing
