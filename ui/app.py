@@ -12,11 +12,14 @@ os.environ["STREAMLIT_SERVER_ENABLE_FILE_WATCHER"] = "false" # Disables problema
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'feedback')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'dashboards')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'security')))
 
-# Import the agent, feedback logger, and metrics functions
+# Import the agent, feedback logger, metrics functions, and security modules
 from src.agents.multi_tool_agent import run_agent
 from feedback.logger import log_feedback
 from dashboards.metrics import load_feedback_data, get_query_count, get_feedback_counts
+from security.pii_filter import filter_pii
+from security.compliance_tagger import tag_compliance
 
 st.set_page_config(page_title="AllyIn Compass", layout="wide")
 
@@ -85,20 +88,30 @@ if st.button("Get Answer"):
         agent_response = run_agent(query)
         citations = [] # Placeholder - need to get citations from agent response if using RAG
 
+        # Apply PII filter and compliance tagging
+        filtered_response = filter_pii(agent_response)
+        tags = tag_compliance(filtered_response)
+
+        # Convert tags list to a string for display
+        if tags:
+            tagged_response = f"{filtered_response}\n\nCompliance Tags: {', '.join(tags)}"
+        else:
+            tagged_response = filtered_response
+
         st.subheader("Agent Response:")
         # Simple attempt at highlighting or color-coding using markdown
         # This would need more sophisticated logic based on agent output structure
-        if "Error" in agent_response:
-            st.error(agent_response)
-        elif "Success" in agent_response or "Loaded" in agent_response or "Neighbors" in agent_response or "search results" in agent_response.lower() or "Agent chose" in agent_response:
+        if "Error" in tagged_response:
+            st.error(tagged_response)
+        elif "Success" in tagged_response or "Loaded" in tagged_response or "Neighbors" in tagged_response or "search results" in str(tagged_response).lower() or "Agent chose" in tagged_response:
              # Check for indicators of successful retrieval/action
-             st.success(agent_response)
+             st.success(tagged_response)
         else:
-            st.write(agent_response)
+            st.write(tagged_response)
 
         # Store the last query, response, and citations in session state
         st.session_state.last_query = query
-        st.session_state.last_response = agent_response
+        st.session_state.last_response = tagged_response
         st.session_state.last_citations = citations # Store citations if available
 
     else:

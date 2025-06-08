@@ -1,1 +1,3 @@
- 
+This is a sample document in PDF format.
+It contains some text across multiple lines to simulate a real PDF.
+The document parser should extract this text. 

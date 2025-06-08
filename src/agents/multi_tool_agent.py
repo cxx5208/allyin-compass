@@ -71,8 +71,7 @@ def run_agent(query):
              result = "Please provide a graph query (e.g., node name) after 'graph:'."
              log_tool_usage(chosen_tool, query, result)
              return result
-        # For this simple example, we'll just pass the query string to the graph retriever
-        # In a real agent, you might parse the query to call specific graph functions
+        # The graph_retriever.get_graph_data now handles parsing specific commands
         sample_graph = graph_retriever.create_sample_graph() # Re-create sample graph for simplicity
         graph_results = graph_retriever.get_graph_data(graph_query, sample_graph)
         result = "\n".join(graph_results)

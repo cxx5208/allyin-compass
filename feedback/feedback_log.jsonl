@@ -28,3 +28,24 @@
 {"timestamp": "2025-06-04 00:17:24", "query": "sql: SELECT * FROM sample_data_1", "response": "   id    name  value\n0   1   Apple    100\n1   2  Banana    150\n2   3  Cherry    200", "feedback_type": "thumbs_down"}
 {"timestamp": "2025-06-04 00:17:47", "query": "graph: Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_up"}
 {"timestamp": "2025-06-04 00:17:49", "query": "graph: Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_up"}
+{"timestamp": "2025-06-07 21:06:43", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_up"}
+{"timestamp": "2025-06-07 21:06:44", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_up"}
+{"timestamp": "2025-06-07 21:06:46", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_up"}
+{"timestamp": "2025-06-07 21:06:47", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_down"}
+{"timestamp": "2025-06-07 21:06:49", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_down"}
+{"timestamp": "2025-06-07 21:06:50", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_down"}
+{"timestamp": "2025-06-07 21:06:51", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_down"}
+{"timestamp": "2025-06-07 21:06:52", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_down"}
+{"timestamp": "2025-06-07 21:06:52", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_down"}
+{"timestamp": "2025-06-07 21:06:52", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_down"}
+{"timestamp": "2025-06-07 21:06:52", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_down"}
+{"timestamp": "2025-06-07 21:06:53", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_down"}
+{"timestamp": "2025-06-07 21:08:44", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_up"}
+{"timestamp": "2025-06-07 21:08:57", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_up"}
+{"timestamp": "2025-06-07 21:09:28", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_up"}
+{"timestamp": "2025-06-07 21:09:46", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_down"}
+{"timestamp": "2025-06-07 21:13:36", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_up"}
+{"timestamp": "2025-06-07 21:13:56", "query": "graph: add node City Z", "response": "Node 'City Z' added to the graph.", "feedback_type": "thumbs_down"}
+{"timestamp": "2025-06-07 21:14:03", "query": "graph: add node City Z", "response": "Node 'City Z' added to the graph.", "feedback_type": "thumbs_up"}
+{"timestamp": "2025-06-07 21:14:07", "query": "graph: add node City Z", "response": "Node 'City Z' added to the graph.", "feedback_type": "thumbs_down"}
+{"timestamp": "2025-06-08 14:20:40", "query": "graph: neighbors of Person A", "response": "Neighbors of Person A: ['Company X', 'Project Alpha']", "feedback_type": "thumbs_up"}
