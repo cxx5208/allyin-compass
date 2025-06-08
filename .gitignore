@@ -6,6 +6,7 @@ __pycache__/
 .Python
 venv/
 fresh_venv/
+New_Venv/
 ENV/
 env/
 .env
