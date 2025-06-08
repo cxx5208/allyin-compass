@@ -1,4 +1,5 @@
 import chromadb
+import streamlit as st
 from sentence_transformers import SentenceTransformer
 
 # Configuration
@@ -6,21 +7,25 @@ CHROMA_DB_PATH = './chroma_db'
 COLLECTION_NAME = 'allyin_compass_documents'
 EMBEDDING_MODEL = 'all-MiniLM-L6-v2' # Use the same model as embedder.py
 
-def initialize_chromadb_client(db_path):
-    """Initializes and returns a ChromaDB client."""
+@st.cache_resource
+def get_embedding_model(model_name):
+    """Caches and returns the SentenceTransformer model."""
+    return SentenceTransformer(model_name)
+
+@st.cache_resource
+def get_chroma_collection(db_path, collection_name):
+    """Caches and returns the ChromaDB collection."""
     client = chromadb.PersistentClient(path=db_path)
-    return client
+    collection = client.get_collection(name=collection_name)
+    return collection
 
 def get_vector_retriever(query, k=5, db_path=CHROMA_DB_PATH, collection_name=COLLECTION_NAME, model_name=EMBEDDING_MODEL):
     """Performs a vector similarity search against the ChromaDB collection."""
     try:
-        # Initialize ChromaDB client
-        client = initialize_chromadb_client(db_path)
-        # Get the collection
-        collection = client.get_collection(name=collection_name)
+        # Get the cached embedding model and ChromaDB collection
+        model = get_embedding_model(model_name)
+        collection = get_chroma_collection(db_path, collection_name)
 
-        # Initialize the same embedding model
-        model = SentenceTransformer(model_name)
         # Generate embedding for the query
         query_embedding = model.encode(query).tolist()
 

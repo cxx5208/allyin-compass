@@ -1,6 +1,12 @@
 import streamlit as st
 import sys
 import os
+import torch
+
+# Patch PyTorch path handling
+torch.classes.__path__ = []
+
+os.environ["STREAMLIT_SERVER_ENABLE_FILE_WATCHER"] = "false" # Disables problematic inspection
 
 # Add necessary directories to the Python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -68,6 +74,9 @@ if st.button("Get Answer"):
     if query:
         st.info(f"Running agent for query: '{query}' (Domain: {domain})")
 
+        # Reset feedback status for a new query
+        st.session_state.feedback_submitted = False
+
         # Run the agent with the query
         # NOTE: The current simple agent doesn't use the domain input.
         # Modify the agent logic in src/agents/multi_tool_agent.py to use domain.
@@ -99,14 +108,23 @@ if st.button("Get Answer"):
 if st.session_state.last_query and st.session_state.last_response:
     st.subheader("Provide Feedback:")
     col1, col2 = st.columns(2)
+
+    # Initialize feedback status in session state
+    if 'feedback_submitted' not in st.session_state:
+        st.session_state.feedback_submitted = False
+
     with col1:
-        if st.button("👍 Thumbs Up"):
+        if st.button("👍 Thumbs Up", disabled=st.session_state.feedback_submitted):
             log_feedback(st.session_state.last_query, st.session_state.last_response, 'thumbs_up')
             st.success("Feedback logged: Thumbs Up!")
+            st.session_state.feedback_submitted = True # Mark feedback as submitted
+            st.rerun() # Rerun to disable the button
     with col2:
-        if st.button("👎 Thumbs Down"):
+        if st.button("👎 Thumbs Down", disabled=st.session_state.feedback_submitted):
             log_feedback(st.session_state.last_query, st.session_state.last_response, 'thumbs_down')
             st.success("Feedback logged: Thumbs Down!")
+            st.session_state.feedback_submitted = True # Mark feedback as submitted
+            st.rerun() # Rerun to disable the button
 
 # Display citations if available (Day 13 deliverable)
 if st.session_state.last_citations:
@@ -120,5 +138,6 @@ st.markdown("""
 **How to use:**
 Enter your query above. The agent will attempt to use the available data sources (Structured, Unstructured, Graph) to answer.
 
-*   Try queries like: `sql: SELECT * FROM sample_data_1;`, `vector search: tell me about the sample email`, `graph: Person A`
+*   Try queries like: `sql: SELECT * FROM sample_data_1;`, `vector search: tell me about the sample email`
+*   For graph queries, try: `graph: neighbors of Person A`, `graph: add node City Z`, `graph: paths from Person A to Project Beta`, `graph: all nodes`, `graph: all edges`
 """) 
